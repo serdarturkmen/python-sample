@@ -4,7 +4,7 @@ data = []
 
 
 def get_data():
-    with open('app/mock_data.csv', mode='r') as csv_file:
+    with open('mock_data.csv', mode='r') as csv_file:
         csv_reader = csv.DictReader(csv_file, delimiter=';')
         line_count = 0
         for row in csv_reader:
