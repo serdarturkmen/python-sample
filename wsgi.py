@@ -1,10 +1,10 @@
 from flask import Flask, request, Response, jsonify
 import mock_data
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route('/data/<int:aircraft_id>', methods=['GET'])
+@application.route('/data/<int:aircraft_id>', methods=['GET'])
 def get(aircraft_id):
     resp = jsonify(mock_data.get_data())
     resp.status_code = 200
@@ -12,7 +12,7 @@ def get(aircraft_id):
     return resp
 
 
-@app.route('/test', methods=['POST'])
+@application.route('/test', methods=['POST'])
 def post():
     print(request.is_json)
     content = request.get_json()
@@ -22,7 +22,7 @@ def post():
     return 'JSON posted'
 
 
-@app.errorhandler(404)
+@application.errorhandler(404)
 def not_found(error=None):
     message = {
             'status': 404,
@@ -35,4 +35,4 @@ def not_found(error=None):
 
 
 if __name__ == '__main__':
-    app.run()
+    application.run()
